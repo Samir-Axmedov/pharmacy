@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Medication list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Producer</th>
+        <th scope="col">Refundation</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="medication: ${medications}">
+        <th scope="row" th:text="${medication.id}"></th>
+        <td th:text="${medication.name}"></td>
+        <td th:text="${medication.producer}"></td>
+        <td th:text="${medication.refundation}"></td>
+        <td>
+            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                <a th:href="|/medication/${medication.name}|">
+                    <button type="button" class="btn btn-primary">Details</button>
+                </a>
+                <a th:href="|/edit/${medication.name}|">
+                    <button type="button" class="btn btn-primary">Edit</button>
+                </a>
+                <a th:href="|/delete/${medication.id}|">
+                    <button type="button" class="btn btn-primary">Delete</button>
+                </a>
+            </div>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+</body>
+</html>
