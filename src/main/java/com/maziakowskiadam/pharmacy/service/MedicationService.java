@@ -5,6 +5,8 @@ import com.maziakowskiadam.pharmacy.repository.MedicationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,17 +19,36 @@ public class MedicationService {
     }
 
     @Transactional
-    public void update() {
-        Optional<Medication> byId = medicationRepository.findById(2L);
-        Medication ibuprom = byId.get();
-        ibuprom.setName("Ibuprom Zatoki");
+    public void update(Long id, Medication medication) {
+
+        Optional<Medication> byId = medicationRepository.findById(id);
+        Medication zmiana =byId.get();
+
+        zmiana.setName(medication.getName());
+        zmiana.setProducer(medication.getProducer());
+        zmiana.setRefundation(medication.getRefundation());
     }
 
-    @Transactional
-    public void delete() {
+    public List<Medication> search(String query) {
+
+        List<Medication> searchedByName = medicationRepository.findAllByNameContaining(query);
+        List<Medication> searchedByProducer = medicationRepository.findAllByProducerContaining(query);
+        List<Medication> searchedByRefundation = medicationRepository.findAllByRefundationContaining(query);
+        List<Medication> searchedByAll = new ArrayList<>();
+        searchedByAll.addAll(searchedByName);
+        searchedByAll.addAll(searchedByProducer);
+        searchedByAll.addAll(searchedByRefundation);
+        return searchedByAll;
 
     }
 
 
+//    public List<Medication> searchByCategory(String query) {
+//
+//        List<Medication> searchedByName = medicationRepository.findAllBy(query);
+////        List<Medication> searchedByAll = new ArrayList<>();
+//        return searchedByName;
+//
+//    }
 
 }

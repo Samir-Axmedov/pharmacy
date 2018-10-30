@@ -1,9 +1,6 @@
 package com.maziakowskiadam.pharmacy.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Medication {
@@ -17,7 +14,16 @@ public class Medication {
 
     private String refundation;
 
+    @ManyToOne
+    private Category category;
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Long getId() {
         return id;

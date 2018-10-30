@@ -18,6 +18,11 @@
             <input type="text" th:field="*{producer}" class="form-control" id="producer" style="width: 500px">
             <label for="refundation">Refundation</label>
             <input type="text" th:field="*{refundation}" class="form-control" id="refundation" style="width: 500px">
+
+            <label for="categorySelect">Category</label>
+            <select class="form-control" id="categorySelect" style="width: 500px">
+                <option th:each="category: ${categories}" th:text="${category.getCountry()}"></option>
+            </select>
             <br>
             <button type="submit" class="btn btn-primary">Add a medication</button>
         </div>

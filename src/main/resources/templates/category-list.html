@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Medication list</title>
+    <title>Category List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 <body>
 
@@ -47,47 +48,32 @@
     }
 </script>
 
-<div align="center">
-    <form name="search" th:action="@{/search}" method="post">
-        <input type="text" th:name="query">
-        <button class="btn btn-primary" type="submit">Szukaj</button>
-    </form>
-    <form name="searchByCategory" th:action="@{/search-by-category}" method="post">
-    <select class="form-control" id="categorySelect" th:name="query1" style="width: 500px">
-        <option th:each="category: ${categories}" th:text="${category.getCountry()}"></option>
-    </select>
-    <button class="btn btn-primary" type="submit">Szukaj</button>
-    </form>
-</div>
+<!--<form name="search" th:action="@{/search}" method="post">-->
+<!--<input type="text" th:name="query">-->
+<!--<button class="btn btn-success" type="submit">Szukaj</button>-->
+<!--</form>-->
 
 <table class="table" id="tabelka">
     <thead>
     <tr>
         <th scope="col" style="visibility: hidden"></th>
-        <th scope="col"><a onclick="sortTable(0)"> Name</a></th>
-        <th scope="col"><a onclick="sortTable(1)"> Producer</a></th>
-        <th scope="col"><a onclick="sortTable(2)"> Refundation</a></th>
-        <th scope="col"><a onclick="sortTable(3)"> Category</a></th>
+        <th scope="col"><a onclick="sortTable(0)"> Code</a></th>
+        <th scope="col"><a onclick="sortTable(1)"> Country</a></th>
         <th scope="col"></th>
 
     </tr>
     </thead>
     <tbody>
-    <tr th:each="medication: ${medications}">
-        <th style="visibility: hidden" scope="row" th:text="${medication.id}"></th>
-        <td th:text="${medication.name}"></td>
-        <td th:text="${medication.producer}"></td>
-        <td th:text="${medication.refundation}"></td>
-        <td th:text="${medication.category.getCountry()}"></td>
+    <tr th:each="category: ${categories}">
+        <th style="visibility: hidden" scope="row" th:text="${category.id}"></th>
+        <td th:text="${category.code}"></td>
+        <td th:text="${category.country}"></td>
         <td>
             <div class="btn-group mr-2" role="group" aria-label="Second group">
-                <a th:href="|/medication/${medication.name}|">
-                    <button type="button" class="btn btn-primary">Details</button>
-                </a>
-                <a th:href="|/edit/${medication.id}|">
+                <a th:href="|/edit-category/${category.id}|">
                     <button type="button" class="btn btn-primary">Edit</button>
                 </a>
-                <a th:href="|/delete/${medication.id}|">
+                <a th:href="|/delete-category/${category.id}|">
                     <button type="button" class="btn btn-primary">Delete</button>
                 </a>
             </div>
@@ -99,5 +85,4 @@
 
 
 </body>
-
 </html>

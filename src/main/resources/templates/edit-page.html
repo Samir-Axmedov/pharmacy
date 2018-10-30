@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit Medication</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-<body>
-Edit
+<body style="padding: 20px">
+
+<form  th:object="${medication}" th:action="|/edited/${id}|" method="post">
+
+    <div class="form-group" style="alignment: center">
+        <label for="medicationName">Name</label>
+        <input type="text" th:field="*{name}" class="form-control" id="medicationName" style="width: 500px">
+        <label for="producer">Producer</label>
+        <input type="text" th:field="*{producer}" class="form-control" id="producer" style="width: 500px">
+        <label for="refundation">Refundation</label>
+        <input type="text" th:field="*{refundation}" class="form-control" id="refundation" style="width: 500px">
+        <label for="categorySelect">Category</label>
+        <select class="form-control" id="categorySelect" style="width: 500px">
+            <option th:each="category: ${categories}" th:text="${category.getCountry()}"></option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary" >Submit changes</button>
+    </div>
+</form>
 
 </body>
 </html>
