@@ -22,11 +22,11 @@ public class MedicationService {
     public void update(Long id, Medication medication) {
 
         Optional<Medication> byId = medicationRepository.findById(id);
-        Medication zmiana =byId.get();
-
+        Medication zmiana = byId.get();
         zmiana.setName(medication.getName());
         zmiana.setProducer(medication.getProducer());
         zmiana.setRefundation(medication.getRefundation());
+
     }
 
     public List<Medication> search(String query) {
@@ -41,14 +41,4 @@ public class MedicationService {
         return searchedByAll;
 
     }
-
-
-//    public List<Medication> searchByCategory(String query) {
-//
-//        List<Medication> searchedByName = medicationRepository.findAllBy(query);
-////        List<Medication> searchedByAll = new ArrayList<>();
-//        return searchedByName;
-//
-//    }
-
 }

@@ -85,7 +85,6 @@ public class MedicationController {
         model.addAttribute("categories", categories);
         model.addAttribute("medication", new Medication());
         model.addAttribute("id", new Long(id));
-
         return "edit-page";
     }
 
@@ -97,14 +96,10 @@ public class MedicationController {
 
     @PostMapping("/search")
     public String search(Model model, @RequestParam("query") String query) {
-
         List<Medication> searchedList = medicationService.search(query);
-
         model.addAttribute("searchedList", searchedList);
-
         return "searched-list";
     }
-
 
 
 }

@@ -1,6 +1,7 @@
 package com.maziakowskiadam.pharmacy.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -9,11 +10,13 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+    @NotNull
     private String code;
+    @NotNull
     private String country;
 
     @OneToMany
-    @JoinColumn( name = "category_id")
+    @JoinColumn(name = "category_id")
     private List<Medication> meds;
 
     public Long getId() {

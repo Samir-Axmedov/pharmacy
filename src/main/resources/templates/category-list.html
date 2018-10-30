@@ -9,6 +9,25 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">Pharmacy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/list">Medication list<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/add-category">Add category</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <script>
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -53,13 +72,13 @@
 <!--<button class="btn btn-success" type="submit">Szukaj</button>-->
 <!--</form>-->
 
-<table class="table" id="tabelka">
+<table class="table" id="tabelka" style="width: 80%" align="center">
     <thead>
     <tr>
         <th scope="col" style="visibility: hidden"></th>
         <th scope="col"><a onclick="sortTable(0)"> Code</a></th>
         <th scope="col"><a onclick="sortTable(1)"> Country</a></th>
-        <th scope="col"></th>
+        <th scope="col" style="visibility: hidden"></th>
 
     </tr>
     </thead>

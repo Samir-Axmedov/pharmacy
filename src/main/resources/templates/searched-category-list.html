@@ -9,7 +9,29 @@
 </head>
 <body>
 
-<h4  th:object="${cat}" th:text="${cat.country}"></h4>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">Pharmacy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/add">Add a medication<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/category-list">Categories</a>
+            </li>
+        </ul>
+        <form class="form-inline" th:action="@{/search}" method="post">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search"
+                   style="width: 200px" th:name="query">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="margin-left: 10px">Search</button>
+        </form>
+    </div>
+</nav>
 
 <table class="table" id="tabelka">
     <thead>
@@ -24,7 +46,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="medication: ${koty}">
+    <tr th:each="medication: ${categories}">
         <th style="visibility: hidden" scope="row" th:text="${medication.id}"></th>
         <td th:text="${medication.name}"></td>
         <td th:text="${medication.producer}"></td>

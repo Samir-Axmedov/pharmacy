@@ -7,18 +7,38 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<div align="center">
-<form th:action="@{/category-added}" th:object="${category}" method="post">
-    <br>
-    <div class="form-group" style="alignment: center">
-        <label for="medicationName">Country</label>
-        <input type="text" th:field="*{country}" class="form-control" id="medicationName" style="width: 500px">
-        <label for="producer">Country code (two letters)</label>
-        <input type="text" th:field="*{code}" class="form-control" id="producer" style="width: 500px">
-        <br>
-        <button type="submit" class="btn btn-primary">Add a category</button>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">Pharmacy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/list">Medication list<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/category-list">Categories</a>
+            </li>
+        </ul>
     </div>
-</form>
+</nav>
+
+<div align="center">
+    <form th:action="@{/category-added}" th:object="${category}" method="post">
+        <br>
+        <div class="form-group" style="alignment: center">
+            <label for="medicationName">Country</label>
+            <input type="text" th:field="*{country}" class="form-control" id="medicationName" style="width: 500px" required>
+            <label for="producer">Country code (two letters)</label>
+            <input type="text" th:field="*{code}" class="form-control" id="producer" style="width: 500px" required maxlength="2">
+            <br>
+            <button type="submit" class="btn btn-primary">Add a category</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>

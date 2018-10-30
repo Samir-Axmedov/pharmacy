@@ -22,6 +22,4 @@ public interface MedicationRepository extends JpaRepository<Medication, Long> {
 
     List<Medication> findAllByCategory(Category category);
 
-
-
 }

@@ -8,16 +8,37 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">Pharmacy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/list">Medication list<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/category-list">Categories</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div align="center">
     <form th:action="@{/added}" th:object="${medication}" method="post">
         <br>
         <div class="form-group" style="alignment: center">
             <label for="medicationName">Name</label>
-            <input type="text" th:field="*{name}" class="form-control" id="medicationName" style="width: 500px">
+            <input type="text" th:field="*{name}" class="form-control" id="medicationName" style="width: 500px"
+                   required>
             <label for="producer">Producer</label>
-            <input type="text" th:field="*{producer}" class="form-control" id="producer" style="width: 500px">
+            <input type="text" th:field="*{producer}" class="form-control" id="producer" style="width: 500px" required>
             <label for="refundation">Refundation</label>
-            <input type="text" th:field="*{refundation}" class="form-control" id="refundation" style="width: 500px">
+            <input type="text" th:field="*{refundation}" class="form-control" id="refundation" style="width: 500px"
+                   required>
 
             <label for="categorySelect">Category</label>
             <select class="form-control" id="categorySelect" style="width: 500px">
